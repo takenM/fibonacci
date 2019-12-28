@@ -10,7 +10,19 @@ function fib(n) {
   memo.set(n, value);
   return value
 }
+const trimemo = new Map();
+trimemo.set(0, 0)
+trimemo.set(1, 0)
+trimemo.set(2, 1)
+function tri(n) {
+  if(trimemo.has(n)) {
+    return trimemo.get(n)
+  }
+  const value = tri(n - 1) + tri(n - 2) + tri(n - 3);
+  trimemo.set(n, value)
+  return value
+}
 const length = 40;
 for (let i = 0; i <= length; i++) {
-  console.log(fib(i))
+  console.log(tri(i))
 }
